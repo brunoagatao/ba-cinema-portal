@@ -1,16 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
 
-if (!process.env.OMDB_API_KEY) require('dotenv').config();
-
 module.exports = {
   entry: [
     './src/main.js'
   ],
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'build.js',
+    publicPath: '/dist',
   },
   module: {
     rules: [
@@ -19,8 +17,8 @@ module.exports = {
         use: [{
           loader: 'babel-loader',
           options: {
-            "presets": [["env"]],
-            "plugins": ["transform-es2015-destructuring", "transform-object-rest-spread", "transform-runtime"]
+            'presets': [['env']],
+            'plugins': ['transform-es2015-destructuring', 'transform-object-rest-spread', 'transform-runtime']
           }
         }],
         exclude: /node_modules/,
@@ -35,7 +33,7 @@ module.exports = {
         options: {
           loaders: {
             // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-            // the "scss" and "sass" values for the lang attribute to the right configs here.
+            // the 'scss' and 'sass' values for the lang attribute to the right configs here.
             // other preprocessors should work out of the box, no loader config like this nessessary.
             'scss': 'vue-style-loader!css-loader!sass-loader',
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
@@ -76,7 +74,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
+        NODE_ENV: 'production'
       }
     }),
     new webpack.optimize.UglifyJsPlugin({

@@ -10,9 +10,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "set NODE_ENV=development && nodemon ./server.js --ignore src/ -e js,html,css",
+    "dev": "set NODE_ENV=development&& nodemon ./server.js --ignore src/ -e js,html,css",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "start": "set NODE_ENV=production && npm run build && node server.js"
+    "start": "set NODE_ENV=production&& npm run build && node server.js"
   },
   "dependencies": {
     "async": "^2.1.4",
@@ -32,8 +32,8 @@
     "file-loader": "^0.9.0",
     "moment": "^2.17.1",
     "moment-timezone": "^0.5.11",
-    "nodemon": "^1.11.0",
     "node-sass": "^4.9.0",
+    "nodemon": "^1.11.0",
     "open": "^0.0.5",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
