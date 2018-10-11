@@ -15,7 +15,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 /*
 let offlineData = JSON.parse(fs.readFileSync(path.resolve('./api_offline.json'), 'utf-8'));
-app.get('/offline_api', function(req, res) {
+app.get('/offline_api', (req, res) => {
   let data = offlineData.find(item => item.imdbID === req.query.i);
   if (!data) {
     data = { "Response":"False", "Error":`IMDb ID ${req.query.i} not found.` }
@@ -25,19 +25,20 @@ app.get('/offline_api', function(req, res) {
 */
 
 const template = fs.readFileSync(path.resolve('./src/index.html'), 'utf-8');
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.send(template);
 });
 
-app.get('/api', function (req, res) {
-  api.getData(function (err, data) {
+app.get('/api', (req, res) => {
+  api.getData((err, data) => {
     if (err) res.status(500).send(err);
     else res.json(data);
   });
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, function () {
+app.listen(port, () => {
   console.log(`Listening on port ${port}`);
-  if (process.env.NODE_ENV === 'development') require('open')(`http://localhost:${port}`);
+  if (process.env.NODE_ENV === 'development')
+    require('open')(`http://localhost:${port}`);
 });
