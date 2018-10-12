@@ -5,7 +5,7 @@ import moment from 'moment-timezone';
 import './style.scss';
 
 import routes from './util/routes';
-import { checkFilter } from './util/bus';
+import { checkFilter, setDay } from './util/bus';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -32,8 +32,8 @@ new Vue({
     genre: [],
     time: [],
     movies: [],
-    moment,
     day: moment(),
+    moment,
     bus
   },
   created() {
@@ -42,6 +42,7 @@ new Vue({
     });
 
     this.$bus.$on('check-filter', checkFilter.bind(this));
+    this.$bus.$on('set-day', setDay.bind(this));
   },
   router
 });
