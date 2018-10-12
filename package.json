@@ -11,14 +11,15 @@
   "license": "MIT",
   "scripts": {
     "dev": "set NODE_ENV=development&& nodemon ./server.js --ignore src/ -e js,html,css",
-    "build": "set NPM_CONFIG_PRODUCTION=false && webpack -p",
+    "build": "webpack -p --env production",
     "start": "set NODE_ENV=production&& npm run build && node server.js"
   },
   "dependencies": {
     "async": "^2.1.4",
     "axios": "^0.15.3",
     "dotenv": "^2.0.0",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "webpack": "^2.7.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -43,7 +44,6 @@
     "vue-router": "^2.1.1",
     "vue-style-loader": "^1.0.0",
     "vue-template-compiler": "^2.1.0",
-    "webpack": "^2.7.0",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.14.0",
     "webpack-module-hot-accept": "^1.0.4"
