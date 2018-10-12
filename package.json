@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "set NODE_ENV=development&& nodemon ./server.js --ignore src/ -e js,html,css",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "start": "npm run build && node server.js"
+    "start": "set NODE_ENV=production&& npm run build && node server.js"
   },
   "dependencies": {
     "async": "^2.1.4",

@@ -8,8 +8,9 @@ const app = express();
 if (process.env.NODE_ENV === 'development')
   require('./webpack-dev-middleware').init(app);
 
-if (process.env.NODE_ENV === 'production')
+if (process.env.NODE_ENV === 'production') {
   app.use('/dist', express.static(path.join(__dirname, 'dist')));
+}
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
