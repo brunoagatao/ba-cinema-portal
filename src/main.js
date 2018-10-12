@@ -6,9 +6,11 @@ import './style.scss';
 
 import routes from './util/routes';
 import { checkFilter, setDay } from './util/bus';
+import Tooltip from './util/tooltip';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
+Vue.use(Tooltip);
 
 moment.tz.setDefault('UTC');
 Object.defineProperty(Vue.prototype, '$moment', {

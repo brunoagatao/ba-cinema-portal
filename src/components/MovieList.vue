@@ -3,7 +3,12 @@
     <div v-if='filteredMovies.length'>
       <movie-item v-bind:movie='movie.movie' v-for='movie in filteredMovies'>
         <div class="movie-sessions">
-          <div class='session-time-wrapper' v-for='session in filteredSessions(movie.sessions)'>
+          <div
+            class='session-time-wrapper tooltip-wrapper'
+            v-tooltip='{ seats: session.seats }'
+            v-for='session in filteredSessions(movie.sessions)'
+            v-bind:key='session.id'
+          >
             <div class="session-time">{{ formatSessionTime(session.time) }}</div>
           </div>
         </div>
